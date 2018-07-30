@@ -1,6 +1,6 @@
 // Replaces variables of the form {{VARIABLE}} with the content of `process.env.VARIABLE`
 module.exports = function envsubst(stringContent) {
-	const regex = /\{\{(\w+)\}\})/g;
+	const regex = /\{\{(\w+)\}\}/g;
 
 	const variables = regex.exec(stringContent);
 
