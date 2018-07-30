@@ -1,11 +1,11 @@
-// Replaces variables of the form $VARIABLE or ${VARIABLE} with the content of `process.env.VARIABLE`
+// Replaces variables of the form {{VARIABLE}} with the content of `process.env.VARIABLE`
 module.exports = function envsubst(stringContent) {
-	const regex = /\$(?:(\w+)|{(\w+)})/g;
+	const regex = /{{(\w+)}})/g;
 
 	const variables = regex.exec(stringContent);
 
-	return stringContent.replace(regex, (original, g1, g2) => {
-		const variable = g1 || g2;
+	return stringContent.replace(regex, (original, g) => {
+		const variable = g;
 
 		return process.env.hasOwnProperty(variable)
 			? process.env[variable]
